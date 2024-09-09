@@ -34,9 +34,9 @@ The project is structured with multiple Python scripts that focus on lists and t
 
 ## Example
 
-Example usage for Task 0:
-```python
-print_list_integer([1, 2, 3, 4, 5])
+	Example usage for Task 0:
+	```python
+	print_list_integer([1, 2, 3, 4, 5])
 
 
 	Output:
@@ -46,11 +46,12 @@ print_list_integer([1, 2, 3, 4, 5])
 		4
 		5
 
+
 ## Usage
 
-To execute any of the tasks, simply run the script as shown in the examples below:
-$ ./0-print_list_integer.py
+	To execute any of the tasks, simply run the script as shown in the examples below:
+	$ ./0-print_list_integer.py
 
 ## Author
 
-This project was completed as part of the Holberton School curriculum by "Jean-Paul Dijeont."
+This project was completed as part of the Holberton School curriculum by **Jean-Paul Dijeont.**
