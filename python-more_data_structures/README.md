@@ -44,5 +44,5 @@ To execute any of the tasks, simply run the script as shown below:
 
 ## Author
 
-	This project was completed as part of the Holberton School curriculum by Jean-Paul Dijeont.
+This project was completed as part of the Holberton School curriculum by **Jean-Paul Dijeont**.
 
