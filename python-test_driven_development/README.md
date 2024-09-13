@@ -1,16 +1,16 @@
 # Python - Test-driven Development
 ## Description
 
-	This project is part of the Python curriculum at Holberton School, focusing on Test-Driven Development (TDD) in Python. The goal is to understand the importance of tests, how to write them, and how to apply TDD methodology. This project emphasizes writing documentation and tests before implementing the actual code.
+This project is part of the Python curriculum at Holberton School, focusing on Test-Driven Development (TDD) in Python. The goal is to understand the importance of tests, how to write them, and how to apply TDD methodology. This project emphasizes writing documentation and tests before implementing the actual code.
 ## Requirements
 
-**.**	All files are interpreted/compiled on Ubuntu 20.04 LTS using python3 (version 3.8.5).
-**.**	Python scripts must be formatted with pycodestyle (version 2.7.*).
-**.**	All code files must end with a new line.
-**.**	Executable permissions must be set on all Python scripts.
-**.**	The first line of each Python script must be #!/usr/bin/python3.
-**.**	All your test files should be inside a folder tests.
-**.**	All test files should be executed by using this command: python3 -m doctest ./tests/*.
+	.	All files are interpreted/compiled on Ubuntu 20.04 LTS using python3 (version 3.8.5).
+	.	Python scripts must be formatted with pycodestyle (version 2.7.*).
+	.	All code files must end with a new line.
+	.	Executable permissions must be set on all Python scripts.
+	.	The first line of each Python script must be #!/usr/bin/python3.
+	.	All your test files should be inside a folder tests.
+	.	All test files should be executed by using this command: python3 -m doctest ./tests/*.
 
 ## Files and Tasks
 | Task # | Filename                            | Description                                                                                         |
@@ -28,6 +28,7 @@
 	add_integer(1, 2)
 	# Output:
 	# 3
+
 **Example usage for Task 3**:
 	print_square(4)
 	# Output:
