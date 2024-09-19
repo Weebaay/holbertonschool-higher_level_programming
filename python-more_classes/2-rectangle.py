@@ -2,7 +2,6 @@
 """Module 2-rectangle: define aera and perimiter of rectangle class"""
 
 
-
 class Rectangle:
     """
     class reprenting a rectangle
@@ -66,10 +65,9 @@ class Rectangle:
     def area(self):
         """calculate area of rectangle"""
         return self.__width * self.__heigth
-    
+
     def perimeter(self):
         """Compute the perimeter of rectangle"""
         if self.__width == 0 or self.__heigth == 0:
             return 0
         return 2 * (self.__width + self.__heigth)
-    
