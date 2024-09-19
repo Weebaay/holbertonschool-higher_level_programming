@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""Module 6-square: Define position attribute and enhance my_print method"""
+
+
 class Square:
     def __init__(self, size=0, position=(0, 0)):
         """
@@ -45,7 +48,8 @@ class Square:
         Set the position of the square with validation.
 
         Args:
-            value (tuple): The new position for the square (a tuple of 2 positive integers).
+            value (tuple): The new position for the square
+            (a tuple of 2 positive integers).
 
         Raises:
             TypeError: If value is not a tuple of 2 positive integers.
@@ -62,7 +66,8 @@ class Square:
 
     def my_print(self):
         """
-        Print the square using the character '#', taking into account its position.
+        Print the square using the character '#',
+        taking into account its position.
         If the size is 0, print an empty line.
         """
         if self.__size == 0:
