@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+"""
+    Module 4-square: Define getter and setter for size attribute
+    in Square class
+    """
+
+
 class Square:
     def __init__(self, size=0):
         """
