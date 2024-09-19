@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Module 1-Square: Define private size class square"""
 class Square:
     """
     A class used to represent a Square.
