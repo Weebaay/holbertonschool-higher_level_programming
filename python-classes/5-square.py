@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""Module 5-square: define my_print method to Square class"""
+
+
 class Square:
     def __init__(self, size=0):
         """
@@ -56,4 +59,3 @@ class Square:
         else:
             for _ in range(self.__size):
                 print("#" * self.__size)
-                
