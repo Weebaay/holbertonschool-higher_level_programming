@@ -51,3 +51,11 @@ class Square:
             int: The area of the square (size squared).
         """
         return self.__size ** 2
+
+    def __str__(self):
+        """string of square"""
+        return "Square of size {}".format(self.__size)
+
+    def __repr__(self):
+        """ Square"""
+        return "Square({})".format(self.__size)
