@@ -7,6 +7,7 @@
 
 class Square:
     """A class that defines a square."""
+
     def __init__(self, size=0):
         """
         Initialize a square with a given size.
@@ -52,4 +53,3 @@ class Square:
             int: The area of the square (size squared).
         """
         return self.__size ** 2
-
