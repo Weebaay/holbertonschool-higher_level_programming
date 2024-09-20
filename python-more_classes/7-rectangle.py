@@ -79,7 +79,8 @@ class Rectangle:
         """return a string representaion of the regtangle using '#'"""
         if self.__width == 0 or self.__height == 0:
             return ""
-        rect_str = "\n".join([str(self.print_symbol) * self.__width for _ in range(self.__height)])
+        rect_str = "\n".join([str(self.print_symbol) * self.__width for _ in
+                              range(self.__height)])
         return rect_str
 
     def __repr__(self):
