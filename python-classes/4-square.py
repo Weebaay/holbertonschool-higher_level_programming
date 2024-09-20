@@ -6,6 +6,7 @@
 
 
 class Square:
+    """A class that defines a square."""
     def __init__(self, size=0):
         """
         Initialize a square with a given size.
@@ -52,10 +53,3 @@ class Square:
         """
         return self.__size ** 2
 
-    def __str__(self):
-        """string of square"""
-        return "Square of size {}".format(self.__size)
-
-    def __repr__(self):
-        """ Square"""
-        return "Square({})".format(self.__size)
