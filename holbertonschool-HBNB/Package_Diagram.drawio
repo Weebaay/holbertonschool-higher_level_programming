@@ -1,0 +1,52 @@
+<mxfile host="app.diagrams.net" modified="2024-10-11T13:26:59.445Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0" etag="giVh_cFlzd6C-Ktkiaav" version="24.7.1" type="github">
+  <diagram name="Page-1" id="3ZhLMjrKr55ZNKmxoMaP">
+    <mxGraphModel dx="1042" dy="615" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pL3Qk16e_6yq0eL2xQDe-5" value="" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="280" y="140" as="sourcePoint" />
+            <mxPoint x="280" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pL3Qk16e_6yq0eL2xQDe-6" value="&lt;font style=&quot;font-size: 13px;&quot;&gt;FACADE INTERFACE&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;rotation=0;" vertex="1" parent="1">
+          <mxGeometry x="210" y="200" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pL3Qk16e_6yq0eL2xQDe-8" value="«interface»&lt;br&gt;&lt;b&gt;PresentationLayer&lt;/b&gt;" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="220" y="10" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="pL3Qk16e_6yq0eL2xQDe-9" value="+ServiceAPI" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="220" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pL3Qk16e_6yq0eL2xQDe-10" value="&lt;b&gt;BusinessLogicLayer&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=default;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="280" width="140" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="pL3Qk16e_6yq0eL2xQDe-11" value="+ User" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;labelBackgroundColor=default;fontSize=14;" vertex="1" parent="pL3Qk16e_6yq0eL2xQDe-10">
+          <mxGeometry y="26" width="140" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="pL3Qk16e_6yq0eL2xQDe-12" value="+ Place" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;labelBackgroundColor=default;fontSize=14;" vertex="1" parent="pL3Qk16e_6yq0eL2xQDe-10">
+          <mxGeometry y="52" width="140" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="pL3Qk16e_6yq0eL2xQDe-13" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;+ Review&lt;/font&gt;&lt;div style=&quot;font-size: 14px;&quot;&gt;&lt;br style=&quot;font-size: 14px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 14px;&quot;&gt;+ Amenity&lt;/div&gt;&lt;div style=&quot;font-size: 14px;&quot;&gt;&lt;br style=&quot;font-size: 14px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 14px;&quot;&gt;+ Other&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;labelBackgroundColor=default;fontSize=14;" vertex="1" parent="pL3Qk16e_6yq0eL2xQDe-10">
+          <mxGeometry y="78" width="140" height="112" as="geometry" />
+        </mxCell>
+        <mxCell id="pL3Qk16e_6yq0eL2xQDe-14" value="" style="endArrow=classic;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;exitX=0.503;exitY=0.995;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="pL3Qk16e_6yq0eL2xQDe-13">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="279.5" y="480" as="sourcePoint" />
+            <mxPoint x="279.5" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pL3Qk16e_6yq0eL2xQDe-15" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;DATA ACCESS&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="230" y="530" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pL3Qk16e_6yq0eL2xQDe-18" value="&lt;b&gt;PersistenceLayer&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="215" y="600" width="140" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="pL3Qk16e_6yq0eL2xQDe-20" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;+ DataBaseAccess&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="pL3Qk16e_6yq0eL2xQDe-18">
+          <mxGeometry y="26" width="140" height="26" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
