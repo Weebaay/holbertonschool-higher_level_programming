@@ -4,7 +4,6 @@ Develop a simple API using python with the http.server"""
 
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
-import http.server
 
 PORT = 8000
 
