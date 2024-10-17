@@ -27,7 +27,7 @@ def get_users():
 def status():
     """This route is used to check the status of the API.
     It responds with "OK"."""
-    return "status": "OK"
+    return "OK"
 
 
 @app.route('/users/<username>', methods=['GET'])
@@ -54,5 +54,4 @@ def add_user():
 
 
 if __name__ == "__main__":
-    """Main entry point of the application."""
-    app.run
+    app.run()
