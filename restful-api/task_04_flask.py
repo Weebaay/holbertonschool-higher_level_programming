@@ -14,24 +14,30 @@ users = {
 }
 
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def home():
+    """This route responds with a welcome message
+    when the root URL is accessed."""
     return "Welcome to the Flask API!"
 
 
-@app.route('/data')
+@app.route('/data', methods=['GET'])
 def get_users():
+    """Route to get a list of all usernames"""
     usernames = list(users.keys())
     return jsonify(usernames)
 
 
-@app.route('/status')
+@app.route('/status', methods=['GET'])
 def status():
+    """This route is used to check the status of the API.
+    It responds with "OK"."""
     return "OK"
 
 
-@app.route('/users/<username>')
+@app.route('/users/<username>', methods=['GET'])
 def get_user(username):
+    """Route to get details of a specific user by username."""
     user = users.get(username)
     if user:
         return jsonify(user)
@@ -41,6 +47,7 @@ def get_user(username):
 
 @app.route('/add_user', methods=['POST'])
 def add_user():
+    """Route to add a new user."""
     data = request.get_json()
     username = data.get('username')
 
@@ -55,4 +62,5 @@ def add_user():
 
 
 if __name__ == '__main__':
+    """Main entry point of the application."""
     app.run(debug=True)
