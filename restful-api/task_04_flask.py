@@ -13,7 +13,7 @@ users = {}
 def home():
     """This route responds with a welcome message
     when the root URL is accessed."""
-    return "message": "Welcome to the Flask API!"
+    return "Welcome to the Flask API!"
 
 
 @app.route('/data', methods=['GET'])
