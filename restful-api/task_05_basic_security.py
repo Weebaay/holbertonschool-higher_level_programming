@@ -2,6 +2,7 @@
 """Module task_05_basic_security: Define API security and
 Authentification techniques"""
 
+from functools import wraps
 from flask import Flask, jsonify, request
 from flask_httpauth import HTTPBasicAuth
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -41,9 +42,10 @@ def verify_password(username, password):
     Returns:
         str: Username if authentication is successful, otherwise None.
     """
-    if username in users and check_password_hash(users[username]
-                                                 ['password'], password):
-        return username
+    user = users.get(username)
+    if user and check_password_hash(user['password'], password):
+        return True
+    return False
 
 
 @app.route('/basic-protected', methods=['GET'])
@@ -54,9 +56,9 @@ def basic_protected():
     Accessible only if valid username and password are provided.
     
     Returns:
-        Response: JSON response with an access granted message
+        Response:response with an access granted message
     """
-    return jsonify({"message": "Basic Auth: Access Granted"})
+    return "Basic Auth: Access Granted"
 
 
 @app.route('/login', methods=['POST'])
@@ -73,16 +75,21 @@ def login():
         credentials are valid.
                  Returns an error message if credentials are invalid.
     """
-    username = request.json.get('username')
-    password = request.json.get('password')
+    data = request.get_json()
+    if not data or not data.get('username') or not data.get('password'):
+        return jsonify({"error": "Username and password are required"}), 400
 
-    if username in users and check_password_hash(users[username]
-                                                 ['password'], password):
-        access_token = create_access_token(identity={"username": username,
-                                                     "role": users[username]
-                                                     ['role']})
+    username = data.get('username')
+    password = data.get('password')
+    user = users.get(username)
+
+    if user and check_password_hash(user['password'], password):
+        access_token = create_access_token(
+            identity={'username': username, 'role': user['role']}
+        )
         return jsonify(access_token=access_token)
-    return jsonify({"error": "Invalid credentials"}), 401
+    else:
+        return jsonify({"error": "Invalid credentials"}), 401
 
 
 @app.route('/jwt-protected', methods=['GET'])
@@ -92,30 +99,35 @@ def jwt_protected():
     Route protected by JWT authentication.
     Accessible only if a valid JWT token is provided.
 
-    Returns:
-        Response: A JSON response with an access granted message and the
-        identity of the current user.
     """
-    current_user = get_jwt_identity()
-    return jsonify({"message": "JWT Auth: Access Granted",
-                    "user": current_user})
+    return "JWT Auth: Access Granted"
+
+
+def admin_required(fn):
+    """
+    Décorateur pour s'assurer que l'utilisateur a le rôle d'administrateur.
+
+    """
+    @wraps(fn)
+    def wrapper(*args, **kwargs):
+        jwt_identity = get_jwt_identity()
+        if jwt_identity and jwt_identity.get('role') == 'admin':
+            return fn(*args, **kwargs)
+        else:
+            return jsonify({"error": "Admin access required"}), 403
+    return wrapper
 
 
 @app.route('/admin-only', methods=['GET'])
 @jwt_required()
+@admin_required
 def admin_only():
     """
     Admin-only route protected by JWT authentication.
     Accessible only by users with the 'admin' role.
 
-    Returns:
-        Response: A JSON response with an access granted message for admins.
-                 Returns an error message if the user is not an admin.
     """
-    current_user = get_jwt_identity()
-    if current_user['role'] != 'admin':
-        return jsonify({"error": "Admin access required"}), 403
-    return jsonify({"message": "Admin Access: Granted"})
+    return "Admin Access: Granted"
 
 
 @jwt.unauthorized_loader
