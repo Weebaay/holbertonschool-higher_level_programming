@@ -6,19 +6,14 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-users = {
-    "jane": {"username": "jane", "name": "jane",
-             "age": 28, "city": "Los Angeles"},
-    "john": {"username": "john", "name": "John",
-             "age": 30, "city": "New York"}
-}
+users = {}
 
 
 @app.route('/', methods=['GET'])
 def home():
     """This route responds with a welcome message
     when the root URL is accessed."""
-    return jsonify({"message": "Welcome to the Flask API!"})
+    return "message": "Welcome to the Flask API!"
 
 
 @app.route('/data', methods=['GET'])
@@ -32,7 +27,7 @@ def get_users():
 def status():
     """This route is used to check the status of the API.
     It responds with "OK"."""
-    return jsonify({"status": "OK"})
+    return "status": "OK"
 
 
 @app.route('/users/<username>', methods=['GET'])
