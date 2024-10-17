@@ -5,7 +5,6 @@ Develop a simple API using python with the http.server"""
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
-PORT = 8000
 
 
 class ApiRequestHandler(BaseHTTPRequestHandler):
@@ -32,8 +31,7 @@ class ApiRequestHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-type", "application/json")
             self.end_headers()
-            status = {"status": "OK"}
-            self.wfile.write(json.dumps(status).encode("utf-8"))
+            self.wfile.write(b"OK")
 
         elif self.path == '/info':
             self.send_response(200)
@@ -51,7 +49,7 @@ class ApiRequestHandler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    server_address = ('', PORT)
+    server_address = ("", 8000)
     httpd = HTTPServer(server_address, ApiRequestHandler)
-    print(f'Serving on port {PORT}...')
+    print("Serving on port 8000...")
     httpd.serve_forever()
