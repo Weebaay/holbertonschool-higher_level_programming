@@ -18,7 +18,7 @@ users = {
 def home():
     """This route responds with a welcome message
     when the root URL is accessed."""
-    return "Welcome to the Flask API!"
+    return jsonify("Welcome to the Flask API!")
 
 
 @app.route('/data', methods=['GET'])
@@ -32,7 +32,7 @@ def get_users():
 def status():
     """This route is used to check the status of the API.
     It responds with "OK"."""
-    return "OK"
+    return jsonify("OK")
 
 
 @app.route('/users/<username>', methods=['GET'])
