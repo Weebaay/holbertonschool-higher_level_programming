@@ -1,5 +1,6 @@
 from flask_restx import Namespace, Resource, fields
 from app.services.facade import HBnBFacade
+from app.models.user import User
 
 api = Namespace('users', description='User operations')
 
@@ -17,20 +18,25 @@ facade = HBnBFacade()
 class UserList(Resource):
     @api.expect(user_model, validate=True)
     @api.response(201, 'User successfully created')
-    @api.response(400, 'Email already registered')
-    @api.response(400, 'Invalid input data')
+    @api.response(400, 'Email already registered or invalid data')
     def post(self):
-        """
-        Register a new user
-        """
+        """Register a new user"""
         user_data = api.payload
+
+        # Validate first_name, last_name, and email before proceeding
+        try:
+            User.validate_first_name(user_data['first_name'])
+            User.validate_last_name(user_data['last_name'])
+            User.validate_email(user_data['email'])
+        except ValueError as e:
+            return {'error': str(e)}, 400
 
         # Check if the email is already registered
         existing_user = facade.get_user_by_email(user_data['email'])
         if existing_user:
             return {'error': 'Email already registered'}, 400
 
-        # Create and return the new user
+        # Create the user if validation passes
         new_user = facade.create_user(user_data)
         return {
             'id': new_user.id,
@@ -53,9 +59,7 @@ class UserResource(Resource):
     @api.response(200, 'User details retrieved successfully')
     @api.response(404, 'User not found')
     def get(self, user_id):
-        """
-        Get user details by ID
-        """
+        """Get user details by ID"""
         user = facade.get_user(user_id)
         if not user:
             return {'error': 'User not found'}, 404
@@ -65,29 +69,32 @@ class UserResource(Resource):
             'last_name': user.last_name,
             'email': user.email
         }, 200
-
+        
     @api.expect(user_model, validate=True)
     @api.response(200, 'User successfully updated')
     @api.response(404, 'User not found')
+    @api.response(400, 'Invalid input data')
     def put(self, user_id):
-        """
-        Update user details by ID
-        """
-        # Fetch the user by ID
+        """Update user details by ID"""
         user = facade.get_user(user_id)
         if not user:
             return {'error': 'User not found'}, 404
-
-        # Update user details via the facade
+        
         user_data = api.payload
-        updated_user = facade.update_user(user_id, user_data)
 
-        if updated_user:
-            return {
-                'id': updated_user.id,
-                'first_name': updated_user.first_name,
-                'last_name': updated_user.last_name,
-                'email': updated_user.email
-            }, 200
-        else:
-            return {'error': 'User not found'}, 404
+        # Validate updated data
+        try:
+            User.validate_first_name(user_data['first_name'])
+            User.validate_last_name(user_data['last_name'])
+            User.validate_email(user_data['email'])
+        except ValueError as e:
+            return {'error': str(e)}, 400
+
+        # Update user details
+        user.update(user_data)
+        return {
+            'id': user.id,
+            'first_name': user.first_name,
+            'last_name': user.last_name,
+            'email': user.email
+        }, 200
