@@ -1,25 +1,33 @@
 #!/usr/bin/python3
-"""Module 0-select_states: Define list all states from database"""
+"""Module 0-select_states: Defines a script that lists all states
+from a database."""
 
 import MySQLdb
 import sys
 
-db = MySQLdb.connect(
-    host="localhost",
-    port=3306,
-    user=sys.argv[1],
-    passwd=sys.argv[2],
-    db=sys.argv[3]
-)
 
-cursor = db.cursor()
+def main():
+    """Connect to the database, fetch all states, and print them."""
+    try:
+        db = MySQLdb.connect(
+            host="localhost",
+            port=3306,
+            user=sys.argv[1],
+            passwd=sys.argv[2],
+            db=sys.argv[3]
+        )
 
-cursor.execute("SELECT * FROM states ORDER BY id ASC;")
+        cursor = db.cursor()
+        cursor.execute("SELECT * FROM states ORDER BY id ASC;")
+        rows = cursor.fetchall()
+        for row in rows:
+            print(row)
 
-rows = cursor.fetchall()
+        cursor.close()
+        db.close()
+    except IndexError:
+        pass
 
-for row in rows:
-    print(row)
 
-cursor.close()
-db.close()
+if __name__ == "__main__":
+    main()
