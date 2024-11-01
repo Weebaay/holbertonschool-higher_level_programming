@@ -1,26 +1,33 @@
 #!/usr/bin/python3
-"""Module 2-my_filter_states: Filter states by user input"""
+"""Module 2-my_filter_states: Lists states with names matching
+a user-provided argument from a database, in ascending order by id."""
 
 import MySQLdb
 import sys
 
 
-db = MySQLdb.connect(
-    host="localhost",
-    port=3306,
-    user=sys.argv[1],
-    passwd=sys.argv[2],
-    db=sys.argv[3]
-)
+def main():
+    """Lists states with names that match a user-provided argument."""
+    db = MySQLdb.connect(
+        host="localhost",
+        port=3306,
+        user=sys.argv[1],
+        passwd=sys.argv[2],
+        db=sys.argv[3]
+    )
 
-cursor = db.cursor()
+    cursor = db.cursor()
+    cursor.execute(
+        "SELECT * FROM states WHERE name = %s ORDER BY id ASC;",
+        (sys.argv[4],))
+    rows = cursor.fetchall()
 
-query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
-cursor.execute(query, (sys.argv[4],))
+    for row in rows:
+        print(row)
 
-rows = cursor.fetchall()
-for row in rows:
-    print(row)
+    cursor.close()
+    db.close()
 
-cursor.close()
-db.close()
+
+if __name__ == "__main__":
+    main()
