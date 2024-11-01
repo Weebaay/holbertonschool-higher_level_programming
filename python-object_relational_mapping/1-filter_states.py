@@ -1,27 +1,32 @@
 #!/usr/bin/python3
-"""Modeule 1-filter_states: Define list all states with naming starting with
-'N' from database"""
-
+"""Module 1-filter_states: Defines a script that lists all states
+starting with 'N' from a database in ascending order by id."""
 
 import MySQLdb
 import sys
 
-db = MySQLdb.connect(
-    host="localhost",
-    port=3306,
-    user=sys.argv[1],
-    passwd=sys.argv[2],
-    db="hbtn_0e_0_usa"
-)
 
-cursor = db.cursor()
+def main():
+    """Lists all states from a database starting with 'N'."""
+    db = MySQLdb.connect(
+        host="localhost",
+        port=3306,
+        user=sys.argv[1],
+        passwd=sys.argv[2],
+        db=sys.argv[3]
+    )
 
-cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC;")
+    cursor = db.cursor()
+    cursor.execute(
+        "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC;")
+    rows = cursor.fetchall()
 
-rows = cursor.fetchall()
+    for row in rows:
+        print(row)
 
-for row in rows:
-    print(row)
+    cursor.close()
+    db.close()
 
-cursor.close()
-db.close()
+
+if __name__ == "__main__":
+    main()
