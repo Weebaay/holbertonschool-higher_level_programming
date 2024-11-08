@@ -43,6 +43,7 @@ def display_products():
         except FileNotFoundError:
             error = "CSV file not found."
     else:
+        # Si la source n'est ni JSON ni CSV, afficher un message d'erreur
         error = "Wrong source. Please use 'json' or 'csv'."
 
     # Filtrer par ID si un ID est fourni
@@ -56,7 +57,7 @@ def display_products():
             error = "Invalid ID format. Please provide a numeric ID."
 
     # Renvoyer les données au template avec les messages d'erreur le cas échéant
-    return render_template('product_display.html', products=products, error_message=error)
+    return render_template('product_display.html', products=products, error=error)
 
 
 if __name__ == '__main__':
