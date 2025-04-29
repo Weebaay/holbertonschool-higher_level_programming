@@ -1,0 +1,177 @@
+/* Base Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #727070;
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    height: 50px; /* Ajuste la hauteur du logo */
+    width: auto;  /* La largeur s'ajustera automatiquement pour garder les proportions */
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 1rem;
+}
+
+main {
+    padding: 2rem;
+}
+
+/* Styles pour les cartes de lieux */
+.place-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.place-card img {
+    width: 300px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+	display: block;
+	margin: 0 auto 10px auto;
+}
+
+.place-card h3 {
+    margin: 1rem 0;
+}
+
+.place-card p {
+    color: #666;
+    font-size: 0.9rem;
+	margin-bottom: 10px;
+}
+
+.place-card .details-button {
+	display: block;
+	width: fit-content;
+	margin: 20px auto 0 auto;
+    background-color: #333;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.place-card .details-button:hover {
+    background-color: #555;
+}
+
+/* Styles pour les détails de lieu */
+.place-details {
+    background-color: #fff;
+    padding: 2rem;
+    margin: 20px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.place-info {
+    margin-bottom: 2rem;
+}
+
+.place-info h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.place-info p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.review-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.review-card h4 {
+    margin-bottom: 0.5rem;
+}
+
+.review-card p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.review-card .rating {
+    font-weight: bold;
+    color: #f39c12;
+}
+
+/* Formulaire d'ajout de critique */
+#add-review form {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+#add-review form label {
+    display: block;
+    margin: 1rem 0 0.5rem;
+}
+
+#add-review form textarea,
+#add-review form select {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#add-review form button {
+    background-color: #333;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#add-review form button:hover {
+    background-color: #555;
+}
+
+/* Styles du footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}

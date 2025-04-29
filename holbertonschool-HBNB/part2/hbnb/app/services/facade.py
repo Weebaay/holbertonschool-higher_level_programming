@@ -1,7 +1,9 @@
+# app/services/facade.py
 from app.persistence.repository import InMemoryRepository
 from app.models.user import User
 from app.models.amenity import Amenity
 from app.models.review import Review
+from app.models.place import Place
 
 
 class HBnBFacade:
@@ -19,8 +21,18 @@ class HBnBFacade:
         Creates a new user and adds them to the repository.
         """
         try:
-            user = User(**user_data)
+            user = User(
+                first_name=user_data['first_name'],
+                last_name=user_data['last_name'],
+                email=user_data['email']
+            )
+            
+            if 'password' in user_data and user_data['password']:
+                user.hash_password(user_data['password'])
+            else:
+                raise ValueError("Password is required")
             self.user_repo.add(user)
+            
             return user
         except ValueError as e:
             raise ValueError(f"Invalid input data: {str(e)}")
@@ -46,6 +58,36 @@ class HBnBFacade:
             self.user_repo.update(user_id, user_data)
             return user
         return None
+    
+    def create_place(self, place_data):
+        try:
+            # Vérifiez si le propriétaire existe
+            owner = self.get_user(place_data['owner_id'])
+            if not owner:
+                raise ValueError(
+                    f"Owner with ID {place_data['owner_id']} does not exist.")
+        
+            # Associez le propriétaire au lieu
+            place_data['owner'] = owner
+            place = Place(**place_data)
+            self.place_repo.add(place)
+            return place
+
+        except ValueError as e:
+            raise ValueError(f"Invalid input data for place: {str(e)}")
+
+    def get_place(self, place_id):
+        """
+        Retrieves a place by its ID.
+        """
+        return self.place_repo.get(place_id)
+    
+    def update_place(self, place_id, data):
+        place = self.get_place(place_id)
+        if not place:
+            return None
+        place.update(data)
+        return place
 
     def create_amenity(self, amenity_data):
         """ Creates a new amenity and adds it to the repository."""

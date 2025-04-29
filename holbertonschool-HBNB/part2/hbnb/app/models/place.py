@@ -6,13 +6,12 @@ available for reservation in the HBnB system.
 """
 
 from app.models.base_model import BaseModel
-from app.models.user import User
 
 
 class Place(BaseModel):
     """Represents a place (property) in the HBnB application."""
 
-    def __init__(self, title, description, price, latitude, longitude, owner):
+    def __init__(self, title, description, price, latitude, longitude, owner_id):
         """
         Initializes a new Place instance.
 
@@ -22,17 +21,17 @@ class Place(BaseModel):
             price (float): The price per night.
             latitude (float): The latitude of the place's location.
             longitude (float): The longitude of the place's location.
-            owner (User): The user who owns the place.
+            owner_id (str): The ID of the user who owns the place.
         """
         super().__init__()
         self.title = title
-        self.description = description
+        self.description = description or ""
         self.price = price
         self.latitude = latitude
         self.longitude = longitude
-        self.owner = owner
-        self.reviews = []
-        self.amenities = []
+        self.owner_id = owner_id  # Changed to store only the owner ID
+        self.reviews = []  # Store review objects
+        self.amenities = []  # Store amenity objects
 
         # Perform validation when the object is created
         self.validate()
@@ -52,8 +51,8 @@ class Place(BaseModel):
             raise ValueError("The latitude must be between -90 and 90.")
         if not (-180 <= self.longitude <= 180):
             raise ValueError("The longitude must be between -180 and 180.")
-        if not isinstance(self.owner, User):
-            raise ValueError("The owner must be a valid User instance.")
+        if not self.owner_id or not self.owner_id.strip():
+            raise ValueError("The owner ID must be a valid non-empty string.")
 
     def add_amenity(self, amenity):
         """
@@ -87,7 +86,7 @@ class Place(BaseModel):
             "price": self.price,
             "latitude": self.latitude,
             "longitude": self.longitude,
-            "owner": self.owner.to_dict(),
+            "owner_id": self.owner_id,
             "reviews": [review.to_dict() for review in self.reviews],
             "amenities": [amenity.to_dict() for amenity in self.amenities],
             "created_at": self.created_at.isoformat(),
